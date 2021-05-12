@@ -18,5 +18,17 @@ class Character < ApplicationRecord
     the_movie = matching_movies.at(0)
 
     return the_movie
-  end
+ end
+belongs_to(:movie)
+belongs_to(:actor)
+#has_many(:movie, {:class_name => "Movie", :foreign_key => "actor_id"})
+#  def actor
+#    my_actor_id = self.movie_id
+
+#    matching_actors = actor.where({ :id => my_actor_id })
+
+#    the_actor = matching_actors.at(0)
+    
+#    return the_actor
+#  end
 end

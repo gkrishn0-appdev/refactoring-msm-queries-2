@@ -11,14 +11,16 @@
 #  updated_at :datetime         not null
 #
 class Actor < ApplicationRecord
-  def characters
-    my_id = self.id
+#  def characters
+#    my_id = self.id
 
-    matching_characters = Character.where({ :actor_id => my_id })
+#    matching_characters = Character.where({ :actor_id => my_id })
 
-    return matching_characters
-  end
+#    return matching_characters
+#  end
 
+has_many(:characters, {:class_name => "Character", :foreign_key => "actor_id"})
+has_many(:filmography, { :through => :characters, :source => :movie})
   def filmography
     array_of_movie_ids = Array.new
 
